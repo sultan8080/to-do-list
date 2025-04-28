@@ -1,15 +1,24 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/database'); 
 
 const Todo = sequelize.define('Todo', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   title: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   completed: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    allowNull: false,
+    defaultValue: false,
   }
+}, {
+  tableName: 'todos',
+  timestamps: true,
 });
 
 module.exports = Todo;
